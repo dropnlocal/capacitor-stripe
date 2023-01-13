@@ -60,7 +60,7 @@ public class StripePlugin extends Plugin {
             this.googlePayExecutor.googlePayLauncher =
                 new GooglePayLauncher(
                     getActivity(),
-                    new GooglePayLauncher.Config(metaData.googlePayEnvironment, metaData.countryCode, metaData.displayName),
+                    new GooglePayLauncher.Config(metaData.googlePayEnvironment, metaData.countryCode, metaData.displayName, true),
                     (boolean isReady) -> this.googlePayExecutor.isAvailable = isReady,
                     (@NotNull GooglePayLauncher.Result result) ->
                         this.googlePayExecutor.onGooglePayResult(bridge, googlePayCallbackId, result)
