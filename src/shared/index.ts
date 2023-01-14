@@ -82,6 +82,8 @@ export interface CreateApplePayOption {
     label: string;
     amount: number;
   }[];
+  requireBillingEmailAddress?: boolean;
+  requireBillingPhoneNumber?: boolean;
   merchantIdentifier: string;
   countryCode: string;
   currency: string;

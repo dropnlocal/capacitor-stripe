@@ -49,6 +49,15 @@ class ApplePayExecutor: NSObject, STPApplePayContextDelegate {
         let paymentRequest = StripeAPI.paymentRequest(withMerchantIdentifier: merchantIdentifier, country: call.getString("countryCode", "US"), currency: call.getString("currency", "USD"))
         paymentRequest.paymentSummaryItems = paymentSummaryItems
 
+        paymentRequest.requiredBillingContactFields = []
+
+        if call.getBool("requireBillingEmailAddress", false) {
+            paymentRequest.requiredBillingContactFields.append(.emailAddress)
+        }
+        if call.getBool("requireBillingPhoneNumber", false) {
+            paymentRequest.requiredBillingContactFields.append(.phoneNumber)
+        }
+
         self.appleClientSecret = paymentIntentClientSecret!
         self.paymentRequest = paymentRequest
 
