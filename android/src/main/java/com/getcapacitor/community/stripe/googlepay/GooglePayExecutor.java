@@ -52,7 +52,11 @@ public class GooglePayExecutor extends Executor {
     }
 
     public void presentGooglePay(final PluginCall call) {
-        this.googlePayLauncher.presentForSetupIntent(this.clientSecret, this.currency);
+        if (this.clientSecret != null && this.clientSecret.startsWith("seti_")) {
+            this.googlePayLauncher.presentForSetupIntent(this.clientSecret, this.currency);
+        } else {
+            this.googlePayLauncher.presentForPaymentIntent(this.clientSecret);
+        }
     }
 
     public void onGooglePayResult(Bridge bridge, String callbackId, @NotNull GooglePayLauncher.Result result) {
