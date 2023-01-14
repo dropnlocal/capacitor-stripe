@@ -51,10 +51,10 @@ class ApplePayExecutor: NSObject, STPApplePayContextDelegate {
 
         paymentRequest.requiredShippingContactFields = [.name]
 
-        if call.getBool("requireBillingEmailAddress", false) {
+        if call.getBool("requireEmailAddress", false) {
             paymentRequest.requiredShippingContactFields.insert(.emailAddress)
         }
-        if call.getBool("requireBillingPhoneNumber", false) {
+        if call.getBool("requirePhoneNumber", false) {
             paymentRequest.requiredShippingContactFields.insert(.phoneNumber)
         }
 

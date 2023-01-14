@@ -64,13 +64,11 @@ public class StripePlugin extends Plugin {
                         metaData.googlePayEnvironment,
                         metaData.countryCode,
                         metaData.displayName,
-                        metaData.requireBillingEmail,
+                        metaData.requireEmailAddress,
                         new GooglePayLauncher.BillingAddressConfig(
-                            metaData.requireBillingAddress,
-                            metaData.billingAddressFormat == "Full"
-                                ? GooglePayLauncher.BillingAddressConfig.Format.Full 
-                                : GooglePayLauncher.BillingAddressConfig.Format.Min,
-                            metaData.requireBillingPhone
+                            true,
+                            GooglePayLauncher.BillingAddressConfig.Format.Min,
+                            metaData.requirePhoneNumber
                         )
                     ),
                     (boolean isReady) -> this.googlePayExecutor.isAvailable = isReady,
