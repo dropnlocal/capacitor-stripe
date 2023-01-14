@@ -15,6 +15,10 @@ public class MetaData {
     public String publishableKey;
     public String countryCode;
     public String displayName;
+    public boolean requireBillingEmail;
+    public boolean requireBillingPhone;
+    public boolean requireBillingAddress;
+    public String billingAddressFormat;
     public GooglePayEnvironment googlePayEnvironment;
 
     public MetaData(Supplier<Context> contextSupplier) {
@@ -28,6 +32,10 @@ public class MetaData {
             publishableKey = appInfo.metaData.getString("com.getcapacitor.community.stripe.publishable_key");
             countryCode = appInfo.metaData.getString("com.getcapacitor.community.stripe.country_code");
             displayName = appInfo.metaData.getString("com.getcapacitor.community.stripe.merchant_display_name");
+            requireBillingEmail = appInfo.metaData.getBoolean("com.getcapacitor.community.stripe.require_billing_email");
+            requireBillingPhone = appInfo.metaData.getBoolean("com.getcapacitor.community.stripe.require_billing_phone");
+            requireBillingAddress = appInfo.metaData.getBoolean("com.getcapacitor.community.stripe.require_billing_address");
+            billingAddressFormat = appInfo.metaData.getString("com.getcapacitor.community.stripe.billing_address_format");
 
             boolean isTest = appInfo.metaData.getBoolean("com.getcapacitor.community.stripe.google_pay_is_testing");
             if (isTest) {
